@@ -13,7 +13,7 @@ import top.kthirty.constant.UserIndexConstant;
 /**
  * 用户搜索引擎实体
  */
-@Document(indexName = UserIndexConstant.INDEX_NAME,shards = 1,replicas = 0)
+@Document(indexName = UserIndexConstant.INDEX_NAME,type = UserIndexConstant.TYPE,shards = 1,replicas = 0)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

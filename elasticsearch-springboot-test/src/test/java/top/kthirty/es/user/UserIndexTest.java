@@ -1,12 +1,16 @@
 package top.kthirty.es.user;
 
 import lombok.AllArgsConstructor;
+import org.assertj.core.util.Lists;
 import org.elasticsearch.common.Randomness;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryStringQueryBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.springframework.data.elasticsearch.core.query.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import top.kthirty.Application;
 import top.kthirty.domain.UserCO;
@@ -21,10 +25,6 @@ import java.util.Random;
 public class UserIndexTest {
     @Autowired
     private IUserEsIndexService userEsIndexService;
-    @Autowired
-    private ElasticsearchOperations elasticsearchOperations;
-
-
 
     @Test
     public void testInsert() {
@@ -42,5 +42,32 @@ public class UserIndexTest {
             userCOList.add(userCO);
         }
         userEsIndexService.insert(userCOList);
+    }
+
+    @Test
+    public void testQuery(){
+        SearchQuery searchQuery = new NativeSearchQuery(new QueryStringQueryBuilder("1"));
+        List<UserCO> userCOS = userEsIndexService.queryForList(searchQuery, UserCO.class);
+        userCOS.forEach(System.out::println);
+    }
+
+    @Test
+    public void testDelete(){
+        UserCO userCO = new UserCO();
+        userCO.setId(1L);
+        userEsIndexService.delete(userCO);
+    }
+    @Test
+    public void testUpdate() throws InterruptedException {
+        SearchQuery searchQuery = new NativeSearchQuery(new QueryStringQueryBuilder("2"));
+        List<UserCO> userCOS = userEsIndexService.queryForList(searchQuery, UserCO.class);
+        userCOS.forEach(System.out::println);
+
+        UserCO userCO = new UserCO(2L,"测试变更"+System.currentTimeMillis(),100);
+        userEsIndexService.update(userCO);
+
+        Thread.sleep(500);
+        List<UserCO> userCOS2 = userEsIndexService.queryForList(searchQuery, UserCO.class);
+        userCOS2.forEach(System.out::println);
     }
 }
