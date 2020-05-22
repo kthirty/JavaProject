@@ -1,8 +1,6 @@
-package com.kthirty.api;
+package top.kthirty.api;
 
 import com.alibaba.fastjson.JSON;
-
-import java.util.HashMap;
 
 /**
  * 测试R 类

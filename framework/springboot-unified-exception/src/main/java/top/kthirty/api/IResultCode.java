@@ -1,4 +1,4 @@
-package com.kthirty.api;
+package top.kthirty.api;
 
 import java.io.Serializable;
 
