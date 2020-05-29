@@ -29,6 +29,9 @@ import javax.sql.DataSource;
  *   "orderField":"api_type",
  *   "orderType":"desc"
  * }
+ *
+ * 使用手册https://www.bookstack.cn/read/hasor-4.1.1/86a6a28d2351efc7.md
+ * 官方文档https://www.hasor.net/web/overview/catalog.html
  */
 
 @DimModule
