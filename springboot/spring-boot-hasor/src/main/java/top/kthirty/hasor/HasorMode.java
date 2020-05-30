@@ -1,8 +1,6 @@
 package top.kthirty.hasor;
 
-import lombok.AllArgsConstructor;
 import net.hasor.core.ApiBinder;
-import net.hasor.core.AppContext;
 import net.hasor.core.DimModule;
 import net.hasor.core.Module;
 import net.hasor.db.JdbcModule;
@@ -42,15 +40,5 @@ public class HasorMode implements Module {
     @Override
     public void loadModule(ApiBinder apiBinder) throws Throwable {
         apiBinder.installModule(new JdbcModule(Level.Full,dataSource));
-    }
-
-    @Override
-    public void onStart(AppContext appContext) throws Throwable {
-        System.out.println("hasor启动---->"+appContext);
-    }
-
-    @Override
-    public void onStop(AppContext appContext) throws Throwable {
-        System.out.println("hasor停止---->"+appContext);
     }
 }
