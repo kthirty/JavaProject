@@ -14,7 +14,8 @@ public class MinioUtils {
     }
 
     public static void makeBucket(String bucketName){
-
+        MinioClient instance = getInstance();
+        instance.make
     }
 
     public static void main(String[] args) {
