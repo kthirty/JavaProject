@@ -7,7 +7,8 @@ import com.alibaba.fastjson.JSON;
  */
 public class RTest {
     public static void main(String[] args) {
-        System.out.println("\n——————————————————成功————————————————————————");
+        System.out.println(R.success((Object) "12344"));
+        /*System.out.println("\n——————————————————成功————————————————————————");
         System.out.println("无承载数据成功__"+ JSON.toJSONString(R.success()));
         System.out.println("承载数据成功__"+JSON.toJSONString(R.success(new String[]{"承载数据"})));
         System.out.println("承载数据并修改描述成功__"+JSON.toJSONString(R.success(new String[]{"承载数据"},"修改的描述信息")));
@@ -24,6 +25,7 @@ public class RTest {
         System.out.println("\n——————————————————创建后修改————————————————————————");
         System.out.println("修改消息__"+R.success().message("创建之后修改的消息"));
         System.out.println("修改数据__"+R.success("11").data("创建之后修改的承载数据"));
-        System.out.println("修改成功标识__"+R.success().success(false));
+        System.out.println("修改成功标识__"+R.success().success(false));*/
+
     }
 }
